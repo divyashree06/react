@@ -11,10 +11,9 @@ const App = () => {
           logo="BBC"
         />
         <Jumbotron 
-          title="Homepage"
+          title="Newsletter"
           lead="This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
           description="This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
-          linkLabel="Read More"
         />
     </div>
   );

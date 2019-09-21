@@ -8,8 +8,17 @@ const Jumbotron = (prop) => {
                 <p className="lead">{prop.lead}</p>
                 <hr className="my-4" />
                 <p>{prop.description}</p>
-                <a className="btn btn-primary btn-lg" 
-                href="#" role="button">{prop.linkLabel}</a>
+
+                <div className="form-row align-items-center">
+                    <div className="col-auto my-1 col-sm-4">
+                        <input type="text" className="form-control"/>
+                    </div>
+                    <div className="col-auto my-1">
+                        <button 
+                        type="submit"
+                        className="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
             </div>
         </div>
     )
