@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import Modal from './Modal';
 import { validateEmail } from './utils';
 
 const Jumbotron = (prop) => {
 
     const [state, setState] = useState(
-        { emailValid: null }
+        { emailValid: null },
+        { modal: 'hidden' }
     );
 
     // Above code is short for the following: 
@@ -12,14 +14,18 @@ const Jumbotron = (prop) => {
     // const subscribed = reactArray[0];
     // const setSubscribed = reactArray[1]
 
-    let emailField;
+    let emailField; // This will be the input field when React renders
 
     const subsribeUser = () => {
         if(!validateEmail(emailField.value)) {
             setState({ emailValid: 'invalid' })
         } else {
-            setState({ emailValid: 'valid' })
+            setState({ emailValid: 'valid', modal: 'visible' })
         }
+    }
+
+    const closeTheModal = () => {
+        setState({  ...state, modal: 'hidden'  })
     }
 
     return (
@@ -33,7 +39,7 @@ const Jumbotron = (prop) => {
                 <div className="form-row align-items-center">
                     <div className="col-auto my-1 col-sm-4">
                         <input 
-                        ref={ (inputField)=>{ emailField = inputField} }
+                        ref={ (inputField)=>{ emailField = inputField } }
                         placeholder="Enter email address" type="text" className="form-control"/>
                     </div>
                     <div className="col-auto my-1">   
@@ -49,18 +55,23 @@ const Jumbotron = (prop) => {
 
                 {
                     state.emailValid === "valid" && 
-                    <div className="alert alert-success" role="alert">
-                        You've been subscribed successfully!
-                    </div>
+                    state.modal === "visible" &&
+                    <Modal onClose={closeTheModal}>
+                        <div className="success-message">You've been subscribed successfully!</div>
+                    </Modal>
                 }
+
                 {
                     state.emailValid === "invalid" && 
                     <div className="alert alert-danger" role="alert">
                         Please enter a valid email address.
                     </div>
                 }
+
+                
             </div>
         </div>
     )
 }
+
 export default Jumbotron;
