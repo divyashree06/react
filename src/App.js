@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import NavBar from './NavBar';
+import Jumbotron from './Jumbotron';
 import './App.css';
 
-function App() {
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <NavBar 
+          logo="BBC"
+        />
+        <Jumbotron 
+          title="Homepage"
+          lead="This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
+          description="This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information."
+          linkLabel="Read More"
+        />
     </div>
   );
 }
