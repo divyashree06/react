@@ -6,7 +6,6 @@ const Jumbotron = (prop) => {
 
     const [state, setState] = useState(
         { emailValid: null },
-        { modal: 'hidden' }
     );
 
     // Above code is short for the following: 
@@ -20,12 +19,8 @@ const Jumbotron = (prop) => {
         if(!validateEmail(emailField.value)) {
             setState({ emailValid: 'invalid' })
         } else {
-            setState({ emailValid: 'valid', modal: 'visible' })
+            setState({ emailValid: 'valid' })
         }
-    }
-
-    const closeTheModal = () => {
-        setState({  ...state, modal: 'hidden'  })
     }
 
     return (
@@ -55,10 +50,9 @@ const Jumbotron = (prop) => {
 
                 {
                     state.emailValid === "valid" && 
-                    state.modal === "visible" &&
-                    <Modal onClose={closeTheModal}>
-                        <div className="success-message">You've been subscribed successfully!</div>
-                    </Modal>
+                    <div className="alert alert-success" role="alert">
+                        You've been subscribed successfully!
+                    </div>
                 }
 
                 {
